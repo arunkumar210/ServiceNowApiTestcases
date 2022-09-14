@@ -1,0 +1,275 @@
+{
+	"info": {
+		"_postman_id": "1c90a4f7-83ec-403a-a6cb-3493aaa72035",
+		"name": "ServiceNowAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23261872"
+	},
+	"item": [
+		{
+			"name": "Getting Particular Data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"\");\r",
+							"});\r",
+							"pm.test(\"Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "$w-uhT2j5HAO",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://dev76875.service-now.com/api/now/table/incident?sysparm_query=short_description>=test^caller_id.nameSTARTSWITHMargaret&sysparm_fields=number,category,task_effective_number",
+					"protocol": "https",
+					"host": [
+						"dev76875",
+						"service-now",
+						"com"
+					],
+					"path": [
+						"api",
+						"now",
+						"table",
+						"incident"
+					],
+					"query": [
+						{
+							"key": "sysparm_query",
+							"value": "short_description>=test^caller_id.nameSTARTSWITHMargaret"
+						},
+						{
+							"key": "sysparm_fields",
+							"value": "number,category,task_effective_number"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Creating",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Account Creation\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "$w-uhT2j5HAO",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"short_description\":\"Account Creation\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dev76875.service-now.com/api/now/table/incident?sysparm_query=GOTOnumber=INC0000001",
+					"protocol": "https",
+					"host": [
+						"dev76875",
+						"service-now",
+						"com"
+					],
+					"path": [
+						"api",
+						"now",
+						"table",
+						"incident"
+					],
+					"query": [
+						{
+							"key": "sysparm_query",
+							"value": "GOTOnumber=INC0000001"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Modify particular data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"database\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "$w-uhT2j5HAO",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"category\": \"Database\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dev76875.service-now.com/api/now/table/incident/59f484732fb5d110d3ccf21df699b68f?sys_id=59f484732fb5d110d3ccf21df699b68f&action=get_new_entries",
+					"protocol": "https",
+					"host": [
+						"dev76875",
+						"service-now",
+						"com"
+					],
+					"path": [
+						"api",
+						"now",
+						"table",
+						"incident",
+						"59f484732fb5d110d3ccf21df699b68f"
+					],
+					"query": [
+						{
+							"key": "sys_id",
+							"value": "59f484732fb5d110d3ccf21df699b68f"
+						},
+						{
+							"key": "action",
+							"value": "get_new_entries"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Replacing all data",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "$w-uhT2j5HAO",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"category\": \"hardware\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dev76875.service-now.com/api/now/table/incident/59f484732fb5d110d3ccf21df699b68f?sys_id=59f484732fb5d110d3ccf21df699b68f&action=get_new_entries",
+					"protocol": "https",
+					"host": [
+						"dev76875",
+						"service-now",
+						"com"
+					],
+					"path": [
+						"api",
+						"now",
+						"table",
+						"incident",
+						"59f484732fb5d110d3ccf21df699b68f"
+					],
+					"query": [
+						{
+							"key": "sys_id",
+							"value": "59f484732fb5d110d3ccf21df699b68f"
+						},
+						{
+							"key": "action",
+							"value": "get_new_entries"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
